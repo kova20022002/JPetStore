@@ -1,8 +1,12 @@
 import { expect, Page, } from "@playwright/test";
 import { TestData } from "../../tests/TestData";
-import { locators } from "./CheckoutLocators";
+import { locators3 } from "./Checkoutlocators";
+
 
 export class Checkout{
+
+
+  
     static validCheckout(username: string, password: string) {
         throw new Error('Method not implemented.');
     }
@@ -12,15 +16,18 @@ export class Checkout{
     }
 
     async continueCheckout() {
-      const IdList = await this.page.$$(locators.continueButton);
+
+      await this.page.locator(locators3.cont).click();
+/*
+      const IdList = await this.page.$$(locators3.continueButton);
         for(const product of IdList){ 
-            if(locators.continuButtonText == await product.textContent()){
+            if(locators3.continuButtonText == await product.textContent()){
                 await product.click();
                 break;
             }
         }
-        await this.page.waitForLoadState("domcontentloaded");
-    }
+        await this.page.waitForLoadState("domcontentloaded");*/
+    } 
     
 
 
@@ -30,12 +37,12 @@ export class Checkout{
     , state:string, zip:string, country:string){
     
 //card type
-      const IdList = await this.page.$$(locators.cardType);
+      const IdList = await this.page.$$(locators3.cardType);
 
       for (const product of IdList) {
          const productName = await product.getAttribute('name');
 
-         if (locators.cardTypnName === productName) {
+         if (locators3.cardTypnName === productName) {
            await product.click();
            await product.selectOption("Visa");
            break;
@@ -45,7 +52,7 @@ export class Checkout{
        for (const product of IdList) {
         const productName = await product.getAttribute('name');
 
-        if (locators.cardNumberName === productName) {
+        if (locators3.cardNumberName === productName) {
           await product.click();
           await product.fill("999 9999 9999 9999");
           break;
@@ -56,7 +63,7 @@ export class Checkout{
   for (const product of IdList) {
     const productName = await product.getAttribute('name');
 
-    if (locators.expiryDateName === productName) {
+    if (locators3.expiryDateName === productName) {
       await product.click();
       await product.fill("12/03");
       break;
@@ -67,7 +74,7 @@ export class Checkout{
   for (const product of IdList) {
     const productName = await product.getAttribute('name');
 
-    if (locators.firstNameName === productName) {
+    if (locators3.firstNameName === productName) {
       await product.click();
       await product.fill("Emir");
       break;
@@ -78,7 +85,7 @@ export class Checkout{
   for (const product of IdList) {
     const productName = await product.getAttribute('name');
 
-    if (locators.lastNameName === productName) {
+    if (locators3.lastNameName === productName) {
       await product.click();
       await product.fill("Kovac");
       break;
@@ -89,7 +96,7 @@ export class Checkout{
   for (const product of IdList) {
     const productName = await product.getAttribute('name');
 
-    if (locators.adress1Name === productName) {
+    if (locators3.adress1Name === productName) {
       await product.click();
       await product.fill("Tome Mendesa");
       break;
@@ -100,7 +107,7 @@ export class Checkout{
   for (const product of IdList) {
     const productName = await product.getAttribute('name');
 
-    if (locators.adress2Name === productName) {
+    if (locators3.adress2Name === productName) {
       await product.click();
       await product.fill("Titova");
       break;
@@ -112,7 +119,7 @@ export class Checkout{
   for (const product of IdList) {
     const productName = await product.getAttribute('name');
 
-    if (locators.cityName === productName) {
+    if (locators3.cityName === productName) {
       await product.click();
       await product.fill("Sarajevo");
       break;
@@ -123,7 +130,7 @@ export class Checkout{
   for (const product of IdList) {
     const productName = await product.getAttribute('name');
 
-    if (locators.stateName === productName) {
+    if (locators3.stateName === productName) {
       await product.click();
       await product.fill("BiH");
       break;
@@ -134,7 +141,7 @@ export class Checkout{
   for (const product of IdList) {
     const productName = await product.getAttribute('name');
 
-    if (locators.zipName === productName) {
+    if (locators3.zipName === productName) {
       await product.click();
       await product.fill("71320");
       break;
@@ -145,7 +152,7 @@ export class Checkout{
   for (const product of IdList) {
     const productName = await product.getAttribute('name');
 
-    if (locators.countryName === productName) {
+    if (locators3.countryName === productName) {
       await product.click();
       await product.fill("USA");
       break;

@@ -1,4 +1,4 @@
-export const locators={
+export const locators3={
     cardType: '//*[@id="Catalog"]/form/table/tbody/tr/td/select',
     cardTypnName: 'order.cardType',
     cardNumber: '//*[@id="Catalog"]/form/table/tbody/tr/td/input',
@@ -23,6 +23,7 @@ export const locators={
     countryName: 'order.billCountry',
     continueButton: '//*[@id="Catalog"]/form/input',
     continuButtonText: 'Continue',
+    cont: '[value="Continue"]'
    
     
 }

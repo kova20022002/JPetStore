@@ -1,4 +1,4 @@
-export const locators = {
+export const locators2 = {
     animalsImg: '//*[@id="MainImageContent"]/map/area',
     animalsSideMenu: '//*[@id="SidebarContent"]/a/img',
     signinButton: '//*[@id="MenuContent"]/a',

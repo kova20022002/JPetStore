@@ -7,6 +7,7 @@ import { AddToCart } from '../pageObjects/AddToCart/AddToCart';
 import { LoginPage } from '../pageObjects/LoginPage/LoginPage';
 import { Checkout } from '../pageObjects/Checkout/Checkout';
 import { Dogs } from '../pageObjects/Dogs/Dogs';
+import { locators } from '../pageObjects/LoginPage/LoginPageLocators';
 
 test('Not in stock', async ({ page }) => {
 

@@ -1,6 +1,6 @@
 import { expect, Page, } from "@playwright/test";
 import { TestData } from "../../tests/TestData";
-import { locators } from "./HomePageLocators";
+import { locators2 } from "./HomePageLocators";
 
 export class HomePage{
     static goTo() {
@@ -32,7 +32,7 @@ export class HomePage{
 
 //navigate to sign in 
 async navigateToSignIn(){
-  const IdList = await this.page.$$(locators.signinButton);
+  const IdList = await this.page.$$(locators2.signinButton);
   for(const product of IdList){ 
       if("Sign In" == await product.textContent()){
           await product.click();
@@ -44,7 +44,7 @@ async navigateToSignIn(){
 
 //navigate to animal with image
   async navigateToAnimalImg(alt:String) {
-    const animal = await this.page.$$(locators.animalsImg);
+    const animal = await this.page.$$(locators2.animalsImg);
    for(const prod of animal){
     const productName = await prod.getAttribute('alt');
     if (alt === productName) {
@@ -57,7 +57,7 @@ async navigateToSignIn(){
 
 //navigate to animal with sidebar
 async navigateToAnimalSideBar(src:String) {
-    const animal = await this.page.$$(locators.animalsSideMenu);
+    const animal = await this.page.$$(locators2.animalsSideMenu);
    for(const prod of animal){
     const productName = await prod.getAttribute('src');
     if (src === productName) {
@@ -70,14 +70,14 @@ async navigateToAnimalSideBar(src:String) {
 
 //navigate to animal with searchbox
   async search(searchAnimal:string){
-    await this.page.locator(locators.searchBox).click();
-    await this.page.locator(locators.searchBox).fill(searchAnimal);
-    await this.page.locator(locators.searchButton).click();
+    await this.page.locator(locators2.searchBox).click();
+    await this.page.locator(locators2.searchBox).fill(searchAnimal);
+    await this.page.locator(locators2.searchButton).click();
     await this.page.waitForLoadState("networkidle");
   }
 
   async goToCart(){
-    const IdList = await this.page.$$(locators.cart);
+    const IdList = await this.page.$$(locators2.cart);
     for(const product of IdList){ 
         if("img_cart" == await product.getAttribute('name')){
             await product.click();
