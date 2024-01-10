@@ -17,8 +17,7 @@ export class Checkout{
 
     async continueCheckout() {
 
-      await this.page.locator(locators3.cont).click();
-/*
+
       const IdList = await this.page.$$(locators3.continueButton);
         for(const product of IdList){ 
             if(locators3.continuButtonText == await product.textContent()){
@@ -26,7 +25,7 @@ export class Checkout{
                 break;
             }
         }
-        await this.page.waitForLoadState("domcontentloaded");*/
+        await this.page.waitForLoadState("domcontentloaded");
     } 
     
 

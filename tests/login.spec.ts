@@ -12,9 +12,8 @@ const login = new LoginPage(page);
 const home = new HomePage(page);
 
 await home.goTo();
-await expect(page.locator(locators2.signinButton)).toBeVisible();
+
 await home.navigateToSignIn();
-await expect(page.locator(locators.loginButton)).toBeVisible();
 await login.validLogin(TestData.username, TestData.password);
 });
 

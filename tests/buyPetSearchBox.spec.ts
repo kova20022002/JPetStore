@@ -6,6 +6,7 @@ import { ShoppingCart } from '../pageObjects/ShoppingCart/ShoppingCart';
 import { AddToCart } from '../pageObjects/AddToCart/AddToCart';
 import { LoginPage } from '../pageObjects/LoginPage/LoginPage';
 import { Checkout } from '../pageObjects/Checkout/Checkout';
+import { locators2 } from '../pageObjects/HomePage/HomePageLocators';
 
 
 test('Buy animal on search box', async ({ page }) => {
@@ -18,6 +19,7 @@ test('Buy animal on search box', async ({ page }) => {
     const checkout = new Checkout(page);
 
     await home.goTo();
+    await expect(page.locator(locators2.searchBox)).toBeVisible();
     await home.search(TestData.search);
     await parrot.choseProductId(TestData.productId);
     await addCart.addToCart();
