@@ -12,4 +12,4 @@ To modify the test.ts, make sure to modify the TestData with the new values.
 Sample Usage: TC1 - Register and buy
 
 Open: login.spec.ts
-To run the test: open Terminal, type: ***
+To run the test: open Terminal, type: npx playwright test ./tests/login.spec.ts --project chromium --headed   
