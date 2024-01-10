@@ -2,6 +2,7 @@ export const locators = {
     userName: 'input[name="username"]',
     password: 'input[name="password"]',
     loginButton: '[value="Login"]',
-    signinButton: '#MenuContent > a:nth-child(3)'
+    signinButton: '#MenuContent > a:nth-child(3)',
+    registerButton: '//*[@id="Catalog"]/a',
 
 }

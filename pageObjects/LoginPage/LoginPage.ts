@@ -18,4 +18,16 @@ export class LoginPage{
     await this.page.locator(locators.loginButton).click();
     await this.page.waitForLoadState("networkidle");
   }
+
+  async register(){
+    const IdList = await this.page.$$(locators.registerButton);
+    for(const product of IdList){ 
+        if("Register Now!" == await product.textContent()){
+            await product.click();
+            break;
+        }
+    }
+    await this.page.waitForLoadState("domcontentloaded");
+  }
+
 } 

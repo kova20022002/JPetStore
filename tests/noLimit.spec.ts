@@ -8,7 +8,8 @@ import { LoginPage } from '../pageObjects/LoginPage/LoginPage';
 import { Checkout } from '../pageObjects/Checkout/Checkout';
 
 
-test('Buy animal on side menu', async ({ page }) => {
+
+test('No limit test', async ({ page }) => {
 
     const home = new HomePage(page);
     const parrot = new Birds(page);
@@ -21,13 +22,17 @@ test('Buy animal on side menu', async ({ page }) => {
     await home.navigateToAnimalSideBar(TestData.src);
     await parrot.choseProductId(TestData.productId);
     await addCart.addToCart();
+    await cart.changeQuantity(TestData.quant);
+    await cart.removeProduct();
     await cart.proceedToCheckout();
     await checkout.validCheckout(TestData.cardTy, TestData.cardNum, TestData.expiryD
         , TestData.firstN, TestData.lastN, TestData.ad1, TestData.ad2, TestData.city
         , TestData.state, TestData.zip, TestData.country)
     await checkout.continueCheckout();
-    
-    
-    }); 
-    
-    
+
+    });
+
+
+
+      
+     

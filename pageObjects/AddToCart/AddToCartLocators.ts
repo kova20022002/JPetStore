@@ -1,3 +1,5 @@
 export const locators = {
-    addButton: '//*[@id="Catalog"]/table/tbody/tr[2]/td[5]/a',
+    addButton: ".button",
+    button: '//*[@id="Catalog"]/table/tbody/tr/td/a',
+    name: 'Add to Cart',
  }

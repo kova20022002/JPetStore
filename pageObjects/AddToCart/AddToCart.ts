@@ -12,8 +12,13 @@ export class AddToCart{
       }
 //add to cart
     async addToCart(){
-        await this.page.locator(locators.addButton).click();
+        const IdList = await this.page.$$(locators.button);
+        for(const product of IdList){ 
+            if(locators.name == await product.textContent()){
+                await product.click();
+                break;
+            }
+        }
         await this.page.waitForLoadState("domcontentloaded");
-
     }
 }

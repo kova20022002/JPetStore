@@ -31,20 +31,26 @@ export class HomePage{
   }
 
 //navigate to sign in 
-  async navigateToSignIn() {
-    await this.page.locator(locators.signinButton).click();
-    await this.page.waitForLoadState("domcontentloaded");
+async navigateToSignIn(){
+  const IdList = await this.page.$$(locators.signinButton);
+  for(const product of IdList){ 
+      if("Sign In" == await product.textContent()){
+          await product.click();
+          break;
+      }
   }
+  await this.page.waitForLoadState("domcontentloaded");
+}
 
 //navigate to animal with image
   async navigateToAnimalImg(alt:String) {
     const animal = await this.page.$$(locators.animalsImg);
    for(const prod of animal){
-   if(alt == await prod.getAttribute('alt')){
-    await prod.waitForElementState('visible');
-    await prod.click({ timeout: 60000 });
-    break;
-}
+    const productName = await prod.getAttribute('alt');
+    if (alt === productName) {
+      await prod.click();
+      break;
+     }
 }
     await this.page.waitForLoadState("domcontentloaded");
   }
@@ -52,21 +58,32 @@ export class HomePage{
 //navigate to animal with sidebar
 async navigateToAnimalSideBar(src:String) {
     const animal = await this.page.$$(locators.animalsSideMenu);
-   for(const product of animal){
-   if(src == await product.getAttribute('src')){
-    await product.waitForElementState('visible');
-    await product.click();
-    break;
-}
+   for(const prod of animal){
+    const productName = await prod.getAttribute('src');
+    if (src === productName) {
+      await prod.click();
+      break;
+     }
 }
     await this.page.waitForLoadState("domcontentloaded");
   }
 
 //navigate to animal with searchbox
   async search(searchAnimal:string){
+    await this.page.locator(locators.searchBox).click();
     await this.page.locator(locators.searchBox).fill(searchAnimal);
     await this.page.locator(locators.searchButton).click();
     await this.page.waitForLoadState("networkidle");
   }
 
+  async goToCart(){
+    const IdList = await this.page.$$(locators.cart);
+    for(const product of IdList){ 
+        if("img_cart" == await product.getAttribute('name')){
+            await product.click();
+            break;
+        }
+    }
+    await this.page.waitForLoadState("domcontentloaded");
+  }
 } 

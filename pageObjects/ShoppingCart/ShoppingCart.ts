@@ -19,19 +19,48 @@ export class ShoppingCart{
 
 
     async proceedToCheckout(){
-        await this.page.locator(locators.proceedToCheckoutButton).click();
+        const IdList = await this.page.$$(locators.button);
+        for(const product of IdList){ 
+            if(locators.name == await product.textContent()){
+                await product.click();
+                break;
+            }
+        }
         await this.page.waitForLoadState("domcontentloaded");
     }
 
     async changeQuantity(quantity:string){
-        await this.page.locator(locators.quantityBox).fill(quantity);
-        await this.page.locator(locators.update).click();
-        await this.page.waitForLoadState("networkidle");
+        const IdList = await this.page.$$(locators.quantityBox);
+        for(const product of IdList){ 
+            if(quantity == await product.getAttribute('name')){
+                await product.click();
+                await product.fill(quantity);
+                break;
+            }
+        }
+        await this.page.waitForLoadState("domcontentloaded");
     }
     
     async removeProduct(){
-        await this.page.locator(locators.remove).click();
-        await this.page.waitForLoadState("networkidle");
+        const IdList = await this.page.$$(locators.remove);
+        for(const product of IdList){ 
+            if("Button" == await product.getAttribute('class')){
+                await product.click();
+                break;
+            }
+        }
+        await this.page.waitForLoadState("domcontentloaded");
+    }
+
+    async updateCard(){
+        const IdList = await this.page.$$(locators.update);
+        for(const product of IdList){ 
+            if("updateCartQuantities" == await product.getAttribute('name')){
+                await product.click();
+                break;
+            }
+        }
+        await this.page.waitForLoadState("domcontentloaded");
     }
 
 }
